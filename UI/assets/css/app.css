@@ -1,0 +1,25 @@
+
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: blanchedalmond
+}
+
+
+.container{
+    display: grid;
+    grid-template-columns:100px 1fr 100px;
+    grid-template-rows: 100px 1fr 100px; 
+}
+.header{
+    background-color: blue;
+
+}
+.menu{ background-color: green}
+.content{
+    background-color: blueviolet
+}
+.footer{
+    background-color: black
+}
