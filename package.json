@@ -1,0 +1,28 @@
+{
+  "name": "free-mentors",
+  "version": "1.0.0",
+  "description": "Free   Mentors   is   a   social   initiative   where   accomplished   professionals   become   role   models   to  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebundala/free-mentors.git"
+  },
+  "keywords": [
+    "free",
+    "mentors",
+    "social",
+    "initiative",
+    "profesionals",
+    "role",
+    "models"
+  ],
+  "author": "ebundala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ebundala/free-mentors/issues"
+  },
+  "homepage": "https://github.com/ebundala/free-mentors#readme"
+}
