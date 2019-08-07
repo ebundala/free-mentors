@@ -22,8 +22,8 @@ const $ = (selector, all) => (all
 window.onpopstate = (event) => {
   event.preventDefault();
   setTimeout(() => {
-    const link = document.location.toString().split('#')[1];
-    console.debug(link);
+    // const link = document.location.toString().split('#')[1];
+    // console.debug(link);
     // page(link, event.state);
   }, 0);
 };
