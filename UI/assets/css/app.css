@@ -3,23 +3,60 @@
 body{
     padding: 0;
     margin: 0;
-    background-color: blanchedalmond
+    background-color: grey;
+    
 }
 
 
 .container{
     display: grid;
-    grid-template-columns:100px 1fr 100px;
-    grid-template-rows: 100px 1fr 100px; 
+    grid-template-columns:repeat(12,1fr);
+    grid-template-rows: 48px 
+    repeat(1,calc(100vh - 48px)) repeat(2,calc(100vh / 2 - 48px)) 160px; 
+
+    
 }
 .header{
-    background-color: blue;
+    background-color:lightblue;
+    grid-column: span 12;
+    
+    
 
 }
-.menu{ background-color: green}
-.content{
-    background-color: blueviolet
+.musthead{ 
+    background-color:grey;
+    grid-column: span 12; 
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/goldengate.jpg");
+    background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    
+}
+.musthead>img{
+    width: 100%;
+    height: 100%;
+}
+.main-text{
+    color: antiquewhite;
+    font-size: 32px;
+    padding-bottom: 200px;
+}
+.secondary-info{
+    background-color:lightblue;
+    grid-column: span 12;
+    border: 1px solid transparent;
+    clip-path: circle(25.7% at 10% 50%);
+}
+.testmonials{
+    background-color: antiquewhite;
+    grid-column: span 12;
 }
 .footer{
-    background-color: black
+    background-color: black;
+    grid-column: span 12;
+
 }
