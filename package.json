@@ -4,7 +4,10 @@
   "description": "Free   Mentors   is   a   social   initiative   where   accomplished   professionals   become   role   models   to  ",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "nodemon --exec babel-node /index.js",
+    "test": "mocha --require babel-polyfill --require babel-register",
+    "build": "babel . --out-dir dist",
+    "serve": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +27,14 @@
   "bugs": {
     "url": "https://github.com/ebundala/free-mentors/issues"
   },
-  "homepage": "https://github.com/ebundala/free-mentors#readme"
+  "homepage": "https://github.com/ebundala/free-mentors#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
 }
