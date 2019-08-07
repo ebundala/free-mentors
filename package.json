@@ -8,7 +8,7 @@
     "test": "mocha --require babel-polyfill --require babel-register",
     "build": "babel . --out-dir dist",
     "serve": "node dist/index.js",
-    "lint":"./node_modules/.bin/eslint *.js"
+    "lint": "./node_modules/.bin/eslint *.js"
   },
   "repository": {
     "type": "git",
@@ -33,10 +33,14 @@
     "@babel/preset-env": "^7.5.5",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^1.19.1"
+    "faker": "^4.1.0",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "puppeteer": "^1.19.0"
   },
   "dependencies": {
     "dotenv": "^8.0.0"
