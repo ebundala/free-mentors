@@ -12,9 +12,9 @@ const main = () => {
 * @param {boolean } all - a flag to wether query one node or all nodes
 * @returns {HTMLElement } return - a dom element
 */
-const $ = (selector, all) => (all
+/* const $ = (selector, all) => (all
   ? document.querySelectorAll(selector) : document.querySelector(selector));
-
+*/
 /**
  * @desc listens for dom loading complete
  */
