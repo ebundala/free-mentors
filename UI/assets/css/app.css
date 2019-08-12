@@ -15,11 +15,13 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(12,1fr);
-    grid-template-rows: 5rem repeat(3, auto) 160px;
-    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/goldengate.jpg");
+    grid-template-rows: 5rem repeat(4, auto);
+    /*background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/head2.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
+    background-color: #5B68D9;
+
 }
 
 .header {
@@ -33,7 +35,7 @@ body {
     min-width: 300px;
 }
 
-h3 {
+.header h3 {
     margin: 1rem;
 }
 
@@ -62,8 +64,15 @@ h3 {
     grid-row-gap: 1rem;
     grid-auto-flow: row;
     grid-auto-rows: auto;
-    clip-path: circle(farthest-side at 80% 0%);
-    padding-bottom: 5rem
+    /*clip-path: circle(farthest-side at 80% 0%);*/
+    /*clip-path: ellipse(farthest-side farthest-side at 80% 0%);*/
+    padding-bottom: 5rem;
+    margin-bottom:1rem;
+
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/head.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main-text {
@@ -98,9 +107,49 @@ h3 {
     margin: 1rem;
     margin-bottom: 0.5rem;
     border-radius: 1rem;
-    min-width: 300px;
+    min-width: 268px;
     height: 380px;
+   
+    padding: 1rem;
+    
 }
+.cta-form form{
+    width: 100%;
+    padding:0;
+    margin: 0;
+    display: grid;
+    grid-template-columns:auto;
+    grid-template-rows: auto;
+    grid-auto-flow: row dense;
+    grid-auto-rows: auto;
+}
+.cta-form select{
+    margin: 0rem;
+    /* padding: 0.5rem; */
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    border: 1px solid #61F2CF;
+    border-radius:0.5rem;
+    max-width: 3rem;
+    background-color: #FEFEFF;
+}
+.cta-form input{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #61F2CF;
+    border-radius:0.5rem;
+   
+}
+.cta-form select:focus, input:focus{
+    border: 1px solid #1A4CA2;
+    border-radius:0.5rem;
+    outline-color: transparent;
+    outline-style: hidden;
+}
+/*.cta-form select:focus{
+    border: 1px solid #1A4CA2;
+    border-radius:0.5rem;
+}*/
 
 .sign-up-btn {
     text-align: center;
@@ -112,7 +161,7 @@ h3 {
     background-color: #61F2CF;
     border-radius: 1rem;
     margin: 0.5rem 1rem;
-    color: #FEFEFF
+    color: #5B68D9;
 }
 
 .features {
@@ -123,7 +172,7 @@ h3 {
     grid-template-columns: repeat(3,1fr);
     grid-gap: 2rem;
     margin: 1rem 0rem;
-    padding: 1rem;
+    padding: 5rem;
     grid-auto-flow: row;
     grid-auto-rows: auto;
 }
@@ -208,8 +257,8 @@ h2 {
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
-    border: 2px solid #61F2CF;
-    background-color: yellowgreen;
+    border: 2px solid #1A4CA2;
+    background-color: grey;
 }
 
 .testmony-heading {
@@ -238,7 +287,45 @@ h2 {
 .footer {
     background-color: black;
     grid-column: span 12;
+    margin-top:1rem;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    color:#FEFEFF;
+    padding:2rem 5rem;
 }
+.footer-item{
+  text-align:start;
+}
+.footer-item h4{
+    font-size:1.2rem;
+
+}
+
+.footer-item ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-item ul>li{
+    color: #61F2CF;
+    padding: 0;
+    margin: 0.5rem 0rem;
+}
+
+
+.footer-credits{
+    min-width:100%;
+    text-align:center;
+    padding:2rem;
+}
+
+
+
+
+
+
 
 /*medium sized screen*/
 @media (max-width: 800px) {
