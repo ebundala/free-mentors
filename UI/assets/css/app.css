@@ -1,0 +1,348 @@
+/*primary color #1A4CA2 */
+/*Accent color #61F2CF */
+/*secondary color #5B68D9 */
+/* background color #FFFFFF */
+/*text primary color #FEFEFF   */
+/* text accent color #61F2CF */
+body {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    font-family: sans-serif;
+    min-width: 300px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: 5rem repeat(3, auto) 160px;
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/goldengate.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    background-color: #1A4CA2;
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: minmax(170px,200px) auto 150px;
+    grid-template-rows: 3rem;
+    text-align: center;
+    color: #FEFEFF;
+    min-width: 300px;
+}
+
+h3 {
+    margin: 1rem;
+}
+
+.header>.logo {
+    font-size: 1em;
+    display: inline-block;
+    grid-column: auto;
+    margin: 1rem;
+    height: 3rem;
+}
+
+.header>.sign-in-btn {
+    font-size: 1em;
+    border: 2px solid #61F2CF;
+    border-radius: 1rem;
+    height: 3rem;
+    margin: 1rem ;
+}
+
+.musthead {
+    background-color: #1A4CA2;
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: 5rem auto ;
+    grid-row-gap: 1rem;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    clip-path: circle(farthest-side at 80% 0%);
+    padding-bottom: 5rem
+}
+
+.main-text {
+    color: #FEFEFF;
+    overflow: hidden;
+    max-width: 100%;
+    min-width: 300px;
+    grid-column: 2/9;
+    grid-row-start: 1;
+    padding: 4rem;
+}
+
+.main-text h1 {
+    margin: auto;
+    padding: auto;
+    font-size: 2rem;
+}
+
+.secondary-text {
+    font-size: 1.5em;
+    color: #FEFEFF;
+    padding: 1rem 4rem;
+    min-width: 300px;
+    grid-column: 2/9;
+    grid-row-start: 2;
+}
+
+.cta-form {
+    grid-column-end: 13;
+    grid-row: 1/3;
+    background-color: #FEFEFF;
+    margin: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    min-width: 300px;
+    height: 380px;
+}
+
+.sign-up-btn {
+    text-align: center;
+    font-size: 1em;
+    grid-column-end: 13;
+    grid-row-start: 3;
+    height: 3rem;
+    min-width: 300px;
+    background-color: #61F2CF;
+    border-radius: 1rem;
+    margin: 0.5rem 1rem;
+    color: #FEFEFF
+}
+
+.features {
+    background-color: #5B68D9;
+    grid-column: span 12;
+    border: 1px solid transparent;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 2rem;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+}
+
+.features-heading {
+    text-align: center;
+    color: #FEFEFF;
+    grid-column: 1/span 3;
+    font-size: 2rem;
+    min-width: 268px;
+}
+
+.feature-item {
+    display: grid;
+    grid-column: span 1;
+    grid-row: span 1;
+    grid-template-columns: auto;
+    grid-template-rows: 3rem 2rem auto;
+    text-align: center;
+}
+
+.feature-icon {
+    grid-column: auto;
+    grid-row: 1/2;
+}
+
+.feature-icon>img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.feature-heading {
+    grid-column: auto;
+    grid-row: 2rem;
+    font-size: 1.5rem;
+}
+
+.feature-text {
+    grid-column: auto;
+    grid-row: 3/-1;
+    font-size: 1rem;
+}
+
+h2 {
+    padding: 0;
+    margin: 1rem;
+}
+
+
+.testmonials {
+    background-color: antiquewhite;
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 5rem auto 3rem;
+    grid-gap: 2rem;
+    margin: 1rem 0rem;
+    padding: 5rem;
+    margin-bottom: 1rem;
+}
+
+.testmonials-heading {
+    text-align: center;
+    color: #5B68D9;
+    grid-column: span 3;
+    font-size: 2rem;
+}
+
+.testmony-item {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 6rem 3rem auto;
+    text-align: center;
+}
+
+.testmony-icon {
+    grid-column: auto;
+    grid-row: 1/2;
+}
+
+.testmony-icon>img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 2px solid #61F2CF;
+    background-color: yellowgreen;
+}
+
+.testmony-heading {
+    grid-column: auto;
+    grid-row: 2/3;
+    font-size: 1rem;
+}
+
+.testmony-text {
+    grid-column: auto;
+    grid-row: 3/4;
+    font-size: 1rem;
+}
+
+.cta-btn {
+    text-align: center;
+    border-radius: 1rem;    
+    height: 3rem;
+    color: #FEFEFF;
+    grid-row: 4/-1;
+    grid-column: 2/3;
+    background-color: #1A4CA2;
+    align-self: center;
+}
+
+.footer {
+    background-color: black;
+    grid-column: span 12;
+}
+
+/*medium sized screen*/
+@media (max-width: 800px) {
+    .musthead {
+        grid-template-columns:auto;
+        grid-template-rows: 10rem repeat(3,auto);
+        padding-bottom: 8rem;
+        justify-items: center;
+    }
+
+    .main-text {
+        grid-column: auto;
+        margin: auto;
+        padding: 0;
+    }
+
+    .main-text h1 {
+        font-size: 2rem;
+    }
+
+    .secondary-text {
+        margin: 0;
+        padding: 0;
+        grid-row-start: 2;
+        grid-column: auto;
+    }
+
+    .secondary-text p {
+        margin: 1rem;
+        padding: 0;
+    }
+
+    .cta-form {
+        grid-row-start: 3;
+        grid-column: auto;
+        margin: auto;
+        padding: auto;
+    }
+
+    .sign-up-btn {
+        grid-row-start: 4;
+        grid-column: auto;
+        max-width: 100%;
+        margin: auto;
+        padding: auto;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        grid-template-rows:auto;
+        justify-items: center;
+        padding: 2rem;
+        grid-gap: 0rem;
+       clip-path: circle(farthest-side at 50% 100%);
+
+    }
+
+    .features> :nth-child(2) {
+        grid-row: 2;
+    }
+
+    .features> :nth-child(3) {
+        grid-row: 3;
+    }
+
+    .features> :nth-child(4) {
+        grid-row: 4;
+    }
+
+
+
+   .testmonials {
+        grid-template-columns: 1fr;
+        grid-template-rows:auto;
+        padding: 2rem;
+        justify-items: center;
+        grid-gap: 0rem;
+
+    }
+
+    .testmonials> :nth-child(2) {
+        grid-row: 2;
+        grid-column: auto;
+    }
+
+    .testmonials> :nth-child(3) {
+        grid-row: 3;
+        grid-column: auto;
+    }
+
+    .testmonials> :nth-child(4) {
+        grid-row: 4;
+        grid-column: auto;
+    }
+    .testmonials> :nth-child(5) {
+        grid-row: 5;
+        grid-column: auto;
+    }
+
+
+
+
+}
+
+/*small screed*/
+@media (max-width: 600px) {
+}
