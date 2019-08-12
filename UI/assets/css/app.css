@@ -67,13 +67,12 @@ body {
     /*clip-path: circle(farthest-side at 80% 0%);*/
     /*clip-path: ellipse(farthest-side farthest-side at 80% 0%);*/
     padding-bottom: 5rem;
-    margin-bottom:1rem;
-
     background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/head.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 
 .main-text {
     color: #FEFEFF;
@@ -109,9 +108,7 @@ body {
     border-radius: 1rem;
     min-width: 268px;
     height: 380px;
-   
     padding: 1rem;
-    
 }
 .cta-form form{
     width: 100%;
@@ -125,7 +122,6 @@ body {
 }
 .cta-form select{
     margin: 0rem;
-    /* padding: 0.5rem; */
     padding-top:0.5rem;
     padding-bottom: 0.5rem;
     border: 1px solid #61F2CF;
@@ -138,6 +134,7 @@ body {
     padding: 0.5rem;
     border: 1px solid #61F2CF;
     border-radius:0.5rem;
+    background-color: #FEFEFF;
    
 }
 .cta-form select:focus, input:focus{
@@ -146,10 +143,7 @@ body {
     outline-color: transparent;
     outline-style: hidden;
 }
-/*.cta-form select:focus{
-    border: 1px solid #1A4CA2;
-    border-radius:0.5rem;
-}*/
+
 
 .sign-up-btn {
     text-align: center;
@@ -229,9 +223,8 @@ h2 {
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 5rem auto 3rem;
     grid-gap: 2rem;
-    margin: 1rem 0rem;
     padding: 5rem;
-    margin-bottom: 1rem;
+    
 }
 
 .testmonials-heading {
@@ -287,7 +280,7 @@ h2 {
 .footer {
     background-color: black;
     grid-column: span 12;
-    margin-top:1rem;
+    
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
@@ -321,7 +314,36 @@ h2 {
     padding:2rem;
 }
 
+/*login page styles*/
 
+.login-page  .musthead{
+ grid-template-columns: 1fr;
+ min-height: 100vh;
+ justify-items:center;
+ justify-content:center;
+ background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.899)),url("../img/head2.jpg");
+ background-position: center;
+ background-repeat: no-repeat;
+background-size: cover;
+
+ 
+}
+.login-page  .main-text{
+    grid-column: auto;
+    grid-row-start: 1;
+    text-align:center;
+}
+.login-page .cta-form{
+    grid-column: auto;
+    grid-row-start: 2;
+    max-width:320px;
+    max-height:fit-content;
+}
+.login-page .sign-up-btn{
+    grid-column: auto;
+    grid-row-start: 3;
+    max-width:320px;
+}
 
 
 
