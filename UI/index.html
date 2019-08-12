@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="cta-form">
-                    <form name="sign-up" method="dialog" action="#" >
+                    <form name="sign-up" method="POST" action="#" >
                        <div>
                             <select name="gender">
                             <option value="others" selected disabled>Gender</option>
@@ -37,16 +37,16 @@
                             <option value="Female" >Mrs</option>
                             <option value="Female" >Miss</option>
                         </select>
-                       <input required type="text" name="firstName" placeholder="* First name">
+                       <input required type="text" name="firstName" placeholder="First name *">
                     </div>
-                       <input required type="text" name="lastName" placeholder="* Last Name">                       
+                       <input required type="text" name="lastName" placeholder="* Last Name *">                       
             
-                       <input required type="text" name="occupation" placeholder="* Occupation">
-                       <input type="date" name="dob" name="dob" placeholder="Birthdate *" >
+                       <input required type="text" name="occupation" placeholder="Occupation *">
+                       <input type="date" name="dob" >
                        
-                       <input required type="email" name="email" placeholder="*Email">
-                       <input required type="password" name="password" placeholder="* Password">
-                       <input required type="password" name="password2" placeholder="* Confirm Password">
+                       <input required type="email" name="email" placeholder="*Email *">
+                       <input required type="password" name="password" placeholder="Password *">
+                       <input required type="password" name="password2" placeholder="Confirm Password *">
                        
                     </form>
                 </div>
