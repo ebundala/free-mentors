@@ -36,7 +36,7 @@ body {
 }
 
 .header h3 {
-    margin: 1rem;
+    margin: 0.8rem;
 }
 
 .header>.logo {
@@ -51,7 +51,7 @@ body {
     font-size: 1em;
     border: 2px solid #61F2CF;
     border-radius: 1rem;
-    height: 3rem;
+    height: 2.8rem;
     margin: 1rem ;
 }
 
@@ -345,9 +345,102 @@ background-size: cover;
     max-width:320px;
 }
 
+.content-container{
+grid-column: span 12;   
+display: grid;
+grid-template-columns:auto 1fr;
+grid-template-rows:auto;
+grid-auto-flow: column dense;
+grid-auto-columns: auto;
+overflow:hidden;
+
+}
+
+.menu{
+    grid-row-start: 1;
+    width: 300px;
+    background-color:black;
+    min-height: calc(100vh - 5rem);
+    display: flex;
+    flex-direction: column;
+    transition: width 500ms ease-in-out;
+}
+.menu-icon{
+    display:none;  
+    
+}
+.menu-icon img{
+    height:3rem;
+}
+.menu-item{
+    color: #FEFEFF;
+    font-size: 1.2rem;
+    font-weight: 500; 
+    text-align: start;
+    width: calc(100% - 6rem);
+    padding:1rem 3rem;
+    margin: 0rem auto;
+    
+    
+}
+
+.card {
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  overflow: auto;
+}
 
 
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.menu-item:hover{
+    background-color: #5B68D9;
+}
 
+.all-mentors-page .main-content{
+    margin: 0.5rem;
+    padding: 1rem;
+    max-height: calc(100vh - 5rem);
+    background-color: #FEFEFF;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    grid-template-rows: 200px;
+    grid-auto-flow: row dense;
+    grid-gap: 0.5rem;
+    grid-auto-rows: 200px;
+    overflow-y: auto;
+
+    
+}
+
+.all-mentors-page{
+    background-color: #FEFEFF;
+}
+
+.mentor-card{
+    /*border:1px #1A4CA2 solid;
+    /*width: 200px;*/
+    height: 180px;
+    background-color: #FEFEFF;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 3rem;
+
+}
+
+.mentor-card .avator{
+    grid-column-start: 1;
+    grid-row: 1;
+    border-radius: 50%;
+    width:4rem;
+    height: 4rem;
+    border:1px solid gray;
+    
+}
 
 /*medium sized screen*/
 @media (max-width: 800px) {
@@ -448,10 +541,36 @@ background-size: cover;
     }
 
 
+    .menu{
+       width: 0;
+    }
+    
+    .menu-icon{
+        display:block;
+        margin:auto;
+        grid-column: 1;
+    }
+    .menu-text{
+        display: none;
+    }
 
+    .all-mentors-page .main-content{
+        grid-template-columns: repeat(2,auto);
+    }
+
+    .menu-hide{
+        width: 0px;  
+    }
+    .menu-show{
+        width: 300px;
+    }
 
 }
 
 /*small screed*/
 @media (max-width: 600px) {
+    .all-mentors-page .main-content{
+        grid-template-columns: repeat(1,auto);
+    }
+
 }
