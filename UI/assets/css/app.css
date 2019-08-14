@@ -12,7 +12,15 @@
     --textPrimaryColor:#FEFEFF;
     --textAccentColor:#61F2CF;
 }
+body {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    font-family: sans-serif;
+    min-width: 300px;
+   /* max-width: 1400px;*/
 
+}
 /*utility flexbox classes*/
 .column{
     display: flex;
@@ -67,25 +75,14 @@
 
 /*general styles*/
 
-body {
-    padding: 0;
-    margin: 0;
-    background-color: white;
-    font-family: sans-serif;
-    min-width: 300px;
-}
+
 
 .container {
     display: grid;
     grid-template-columns: repeat(12,1fr);
     grid-template-rows: 5rem repeat(4, auto);
-    /*background-image: 
-    radial-gradient(transparent, 
-    rgba(0, 0, 0, 0.899)),url("../img/head2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;*/
     background-color: var(--secondaryColor);
+    
 
 }
 
@@ -181,10 +178,26 @@ body {
     height: 380px;
     padding: 1rem;
 }
-.cta-form form{
-    width: 100%;
+
+input,
+textarea,
+select{
     padding:0;
     margin: 0;
+    border-radius:0.5rem;
+    border: 1px solid var(--accentColor);
+    background-color:var(--backgroundColor);
+    outline-color: transparent;
+    outline-style: hidden;
+}
+select:focus,
+textarea:focus,
+ input:focus{
+    border: 1px solid var(--primaryColor);
+    
+}
+.cta-form form{
+    
     display: grid;
     grid-template-columns:auto;
     grid-template-rows: auto;
@@ -192,28 +205,19 @@ body {
     grid-auto-rows: auto;
 }
 .cta-form select{
-    margin: 0rem;
     padding-top:0.5rem;
-    padding-bottom: 0.5rem;
-    border: 1px solid var(--accentColor);
+    padding-bottom: 0.5rem;  
     border-radius:0.5rem;
     max-width: 3rem;
-    background-color:var(--backgroundColor);
+  
 }
 .cta-form input{
     margin: 0.5rem;
     padding: 0.5rem;
-    border: 1px solid var(--accentColor);
     border-radius:0.5rem;
-    background-color: var(--backgroundColor);
    
 }
-.cta-form select:focus, input:focus{
-    border: 1px solid var(--primaryColor);
-    border-radius:0.5rem;
-    outline-color: transparent;
-    outline-style: hidden;
-}
+
 
 
 .sign-up-btn {
@@ -708,13 +712,56 @@ button{
 
 
 
+/*request session page*/
 
+.session-request-page 
+.main-content{
+    grid-template-rows:repeat(auto-fit,minmax(40px,min-content)); 
+}
 
+.session-request-header{
+    display: grid;
+}
+.session-request-header
+.mentor-details{
+    grid-row: 1/span 1;
+    
+}
 
+.session-request-header 
+.avator{
+    width: 5rem;
+    height: 5rem;
+    margin:1rem; 
+}
+.session-request-form
+form{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.session-request-form
+textarea{
+    border:1px solid var(--accentColor);
+    border-radius:1rem;
+    width: calc(100% - 2rem);    
+    max-height: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    margin: 0;
+}
+.session-request-form
+button{
+   width: 5rem;
+   float: right; 
+   font-size: 1rem;
+}
 
-
-
-
+.session-request-headline
+h2{
+    margin: 0;
+}
 
 
 
