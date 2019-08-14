@@ -30,7 +30,7 @@ const toggleSideBar = () => {
  * @param {String} to - a selector to append cloned nodes
  * @param {Interger} count- a number of clones to be performed
  */
-const clodeAndAppendNode = (clone, to, count = 1) => {
+const cloneAndAppendNode = (clone, to, count = 1) => {
   const node = $(clone);
   const parent = $(to);
   if (node) {
@@ -46,7 +46,9 @@ const clodeAndAppendNode = (clone, to, count = 1) => {
 const main = () => {
   // console.debug('app loaded hooray');
   $('.menu-icon').addEventListener('click', toggleSideBar);
-  clodeAndAppendNode('.mentor-card', '.main-content', 25);
+  cloneAndAppendNode('.mentor-card', '.main-content', 55);
+
+  cloneAndAppendNode('.session-card', '.main-content', 35);
 };
 
 /**
