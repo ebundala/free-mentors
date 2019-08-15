@@ -1099,7 +1099,7 @@ input{
 
 /*media queries*/
 @media (max-width: 658px){
-    .all-users-page
+.all-users-page
 .users-table{
     grid-template-columns:repeat(auto-fit,minmax(var(--minimumSize), 1fr));
     
