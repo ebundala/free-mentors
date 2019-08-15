@@ -928,7 +928,7 @@ h2{
     margin: 0 1rem;
     clip-path: polygon(5% 5%, 10% 10% 
     ,10% 100% , 100% 100%, 100% 0%, 10% 0%,10% 5%);
-    background-color:var(--primaryColor); 
+    background-color:var(--secondaryColor); 
     color:var(--backgroundColor);
     padding-left:3.5rem;
     padding-right: 1rem;
@@ -959,9 +959,9 @@ button{
    background-color: var(--accentColor); 
 }
 .request-reject-btn{
-   border:1px solid var(--accentColor);
+   border:1px solid var(--primaryColor);
    color: var(--backgroundColor);
-   background-color: var(--primaryColor);
+   background-color: var(--secondaryColor);
 
 }
 
