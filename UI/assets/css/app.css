@@ -1089,8 +1089,11 @@ tr:nth-child(even) td {
     height: 4rem;
 }
 
-/*single user details*/
-
+/*admin make user mentors*/
+.make-mentor
+input{
+  display: inline;
+}
 
 
 
@@ -1237,6 +1240,5 @@ tr:nth-child(even) td {
     }
 
 }
-
 
 
