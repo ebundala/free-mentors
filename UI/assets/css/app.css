@@ -13,7 +13,6 @@ body {
     background-color: white;
     font-family: sans-serif;
     min-width: 300px;
-   /* max-width: 1400px;*/
 }
 
 /*utility flexbox classes*/
@@ -66,6 +65,12 @@ body {
 }
 .flex-wrap{
     flex-wrap: wrap;
+}
+.justify-text{
+    text-align: justify;
+}
+.center-text{
+    text-align: center;
 }
 
 /*general styles*/
@@ -122,11 +127,6 @@ body {
     grid-row-gap: 1rem;
     grid-auto-flow: row;
     grid-auto-rows: auto;
-    /*clip-path: 
-    circle(farthest-side at 80% 0%);*/
-    /*clip-path: 
-    ellipse(farthest-side 
-    farthest-side at 80% 0%);*/
     padding-bottom: 5rem;
     background-image: 
     radial-gradient(transparent, 
