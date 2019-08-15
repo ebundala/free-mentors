@@ -902,7 +902,6 @@ h2{
      80% 90%, 0% 90%);
 }
 .message{
-    /*padding-top: calc(25% + 2rem);*/
     clip-path: polygon(0% 10%, 10% 10%,
      10% 0%, 20% 10%, 100% 10%, 
      100% 100%, 0% 100%);
@@ -925,7 +924,6 @@ h2{
 .request-card
 .requester-details{
     width: var(--minimumSize);
-   /* max-width: var(--smallPhoneSize);*/
     margin:0 1rem;
 }
 .request-card
