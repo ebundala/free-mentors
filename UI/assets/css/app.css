@@ -634,7 +634,7 @@ button{
 
 .mentor-page .main-content{
  grid-template-columns:repeat(auto-fit,minmax(268px,1fr));
- grid-template-rows: repeat(auto-fill,minmax(200px,min-content))
+ grid-template-rows: repeat(auto-fill,minmax(20px,min-content))
  
 }
 .cover-photo img{
@@ -700,12 +700,71 @@ button{
     font-size: 1rem;
     font-weight: 300;
 }
+.mentor-reviews-headline{
+    grid-column: 1/-1;
+}
+.mentor-reviews-headline
+h3{
+    margin: 0.5rem  0;
+}
 
 .mentor-reviews-list{
     overflow-x:hidden;
-    overflow-y: visible 
+    overflow-y: visible;
+    grid-column: 1/-1;
+
+    
+}
+.mentor-reviews-list
+.mentor-review{
+    width:inherit;
+    margin: 1rem;
+    background-color: var(--backgroundColor);
 }
 
+.mentor-review
+.avator{
+    width: 3rem;
+    height: 3rem;
+    margin: 1rem;
+}
+
+.rating
+{
+display: flex;
+flex-direction: row;
+width: inherit;
+height: inherit;
+}
+.rating
+.star{
+    height: inherit;
+    width: 18%;
+    background-color: grey;
+    margin: 1%;
+    clip-path: polygon(50% 0%,
+     61% 35%, 
+     98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 
+     32% 57%, 2% 35%, 39% 35%);
+
+}
+.rating
+.active
+{
+background-color: yellow;
+}
+
+
+.mentor-review
+.rating{
+    width: 120px;
+    height: 20px;
+}
+.mentor-review
+.time{
+    margin-left:1rem;
+    font-size: 1rem;
+}
 
 
 /*request session page*/

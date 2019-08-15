@@ -49,6 +49,7 @@ const main = () => {
   cloneAndAppendNode('.mentor-card', '.main-content', 55);
 
   cloneAndAppendNode('.session-card', '.main-content', 35);
+  cloneAndAppendNode('.mentor-review', '.mentor-reviews-list', 25);
 };
 
 /**
