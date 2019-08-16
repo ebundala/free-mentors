@@ -41,11 +41,20 @@ const cloneAndAppendNode = (clone, to, count = 1) => {
   }
 };
 /**
+ * @description a function to attach event listener on menu
+ */
+const attachMenuHandler = () => {
+  const menu = $('.menu-icon');
+  if (menu) {
+    menu.addEventListener('click', toggleSideBar);
+  }
+};
+/**
  * @description app main entry point
  */
 const main = () => {
   // console.debug('app loaded hooray');
-  $('.menu-icon').addEventListener('click', toggleSideBar);
+  attachMenuHandler();
   cloneAndAppendNode('.mentor-card', '.main-content', 55);
 
   cloneAndAppendNode('.session-card', '.main-content', 35);
