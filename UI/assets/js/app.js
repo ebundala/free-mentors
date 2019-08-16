@@ -49,11 +49,65 @@ const attachMenuHandler = () => {
     menu.addEventListener('click', toggleSideBar);
   }
 };
+
+/**
+ * @description attach event handler to forms
+ */
+const initializeForms = () => {
+  const signUp = $('form[name=sign-up]');
+  const signIn = $('form[name=sign-in]');
+  if (signUp) {
+    signUp.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // riderect here to home page
+      window.location.href = '/UI/all-mentors.html';
+    });
+  }
+  if (signIn) {
+    signIn.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // redirect here to admin home
+      window.location.href = '/UI/all-users.html';
+    });
+  }
+};
+
+const attachHandlersTest = (nodes, link) => {
+  if (nodes) {
+    nodes.forEach((node) => {
+      node.addEventListener('click', (e) => {
+        e.preventDefault();
+        // go to users details instead
+        window.location.href = link;
+      });
+    });
+  }
+};
+/**
+ * @description attach handlers to buttons
+ */
+const initializeButtons = () => {
+  const users = $('make-mentor', true);
+  attachHandlersTest(users, '/UI/user.html');
+
+  const mentors = $('button[name=request-session]', true);
+  attachHandlersTest(mentors, '/UI/request-session.html');
+
+  const mentorsDetails = $('button[name=mentor-details]', true);
+  attachHandlersTest(mentorsDetails, '/UI/mentor.html');
+
+  const userDetails = $('img[alt=avator]', true);
+  attachHandlersTest(userDetails, '/UI/user.html');
+
+  const askForSession = $('button[name=ask]', true);
+  attachHandlersTest(askForSession, '/UI/sessions-history.html');
+};
 /**
  * @description app main entry point
  */
 const main = () => {
   // console.debug('app loaded hooray');
+  initializeForms();
   attachMenuHandler();
   cloneAndAppendNode('.mentor-card', '.main-content', 55);
 
@@ -61,6 +115,8 @@ const main = () => {
   cloneAndAppendNode('.mentor-review', '.mentor-reviews-list', 25);
   cloneAndAppendNode('.request-card', '.main-content', 25);
   cloneAndAppendNode('.user-row', '.user-list', 20);
+
+  initializeButtons();
 };
 
 /**
