@@ -612,7 +612,7 @@ background-color: var(--backgroundColor);
 /*.mentor-card 
 .mentor-card-actions> div>*/ 
 button{
-  background-color: var(--primaryColor); 
+  background-color: var(--primaryColor);
   border: none;
   color: var(--textPrimaryColor);
   padding:0.5rem 0rem;
@@ -1027,19 +1027,29 @@ button{
 
 }
 
-/*admin all users page*/
+/*admin all users and reviews page*/
 
 .all-users-page
-.users-table{
-    
+.users-table,
+.all-reviews-page 
+.reviews-table {
     display: grid;
-    grid-template-columns:2rem 5rem repeat(6,minmax(80px, 150px));
+    grid-template-columns:2rem 5rem repeat(6,minmax(90px, 250px));
+    grid-template-rows: repeat(auto-fit,minmax(10px,min-content));
     border-collapse: collapse;
     max-width: 100%;
 }
 
+.all-reviews-page
+.reviews-table{
+  grid-template-columns:2rem 5rem repeat(5,minmax(90px, 250px));
+}
+
 .all-users-page
-.display-content{
+.display-content,
+.all-reviews-page
+.display-content
+{
     display: contents;
 }
 
@@ -1084,23 +1094,34 @@ tr:nth-child(even) td {
 }
 
 .users-table
+.avator,
+.reviews-table
 .avator{
     width: 4rem;
     height: 4rem;
 }
 
-/*admin make user mentors*/
+/*admin make/revoke user mentor*/
 .make-mentor
 input{
   display: inline;
 }
-
+/*admin delete review btn*/
+.delete-review{
+    padding:0.5rem 1rem;
+    margin: 0;
+    border: 1px solid var(--secondaryColor);
+    background-color: var(--backgroundColor);
+    color: var(--secondaryColor)
+}
 
 
 /*media queries*/
 @media (max-width: 658px){
 .all-users-page
-.users-table{
+.users-table,
+.all-reviews-page
+.reviews-table{
     grid-template-columns:repeat(auto-fit,minmax(var(--minimumSize), 1fr));
     
 }
@@ -1113,6 +1134,12 @@ input{
 .users-table{
     grid-template-columns:repeat(8,minmax(140px, 1fr));
     
+}
+
+.all-reviews-page
+.reviews-table{
+    grid-template-columns:repeat(7,minmax(140px, 1fr));
+
 }
 }
 
