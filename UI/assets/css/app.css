@@ -1089,14 +1089,17 @@ tr:nth-child(even) td {
     height: 4rem;
 }
 
-/*single user details*/
-
+/*admin make user mentors*/
+.make-mentor
+input{
+  display: inline;
+}
 
 
 
 /*media queries*/
 @media (max-width: 658px){
-    .all-users-page
+.all-users-page
 .users-table{
     grid-template-columns:repeat(auto-fit,minmax(var(--minimumSize), 1fr));
     
@@ -1237,6 +1240,5 @@ tr:nth-child(even) td {
     }
 
 }
-
 
 
