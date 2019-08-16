@@ -26,6 +26,8 @@ a:active{
  text-decoration: inherit;  
   padding: 0;
   margin: 0;
+  width:inherit ;
+  height: inherit;
 }
 
 input,
@@ -208,16 +210,7 @@ textarea:focus,
 }
 
 
-.cta-form 
-form{
-    /* display: grid; */
-    /* grid-template-columns:auto; */
-    /* grid-template-rows: auto; */
-    /* grid-auto-flow: row dense; */
-    /* grid-auto-rows: auto; */
-    
-    
-}
+
 .cta-form 
  select{
     padding-top:0.5rem;
