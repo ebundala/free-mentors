@@ -23,6 +23,8 @@ npm install
 * the above step should get all Dependencies  
 * More step comming soon..
 
+### Where is a demo?
+ The demo is running on github pages [here](https://ebundala.github.io/free-mentors/UI)
 
 ### Contribution guidelines ###
 
