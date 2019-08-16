@@ -49,7 +49,7 @@ const attachMenuHandler = () => {
     menu.addEventListener('click', toggleSideBar);
   }
 };
-
+const computeRelativePath = path => window.location.pathname.replace(/(.*)\/[^/]*/, `$1/${path}`);
 /**
  * @description attach event handler to forms
  */
@@ -60,14 +60,14 @@ const initializeForms = () => {
     signUp.addEventListener('submit', (e) => {
       e.preventDefault();
       // riderect here to home page
-      window.location.href = '/UI/all-mentors.html';
+      window.location.href = computeRelativePath('/all-mentors.html');
     });
   }
   if (signIn) {
     signIn.addEventListener('submit', (e) => {
       e.preventDefault();
       // redirect here to admin home
-      window.location.href = '/UI/all-users.html';
+      window.location.href = computeRelativePath('/all-users.html');
     });
   }
 };
@@ -78,7 +78,7 @@ const attachHandlersTest = (nodes, link) => {
       node.addEventListener('click', (e) => {
         e.preventDefault();
         // go to users details instead
-        window.location.href = link;
+        window.location.href = computeRelativePath(link);
       });
     });
   }
@@ -88,19 +88,19 @@ const attachHandlersTest = (nodes, link) => {
  */
 const initializeButtons = () => {
   const users = $('make-mentor', true);
-  attachHandlersTest(users, '/UI/user.html');
+  attachHandlersTest(users, '/user.html');
 
   const mentors = $('button[name=request-session]', true);
-  attachHandlersTest(mentors, '/UI/request-session.html');
+  attachHandlersTest(mentors, '/request-session.html');
 
   const mentorsDetails = $('button[name=mentor-details]', true);
-  attachHandlersTest(mentorsDetails, '/UI/mentor.html');
+  attachHandlersTest(mentorsDetails, '/mentor.html');
 
   const userDetails = $('img[alt=avator]', true);
-  attachHandlersTest(userDetails, '/UI/user.html');
+  attachHandlersTest(userDetails, '/user.html');
 
   const askForSession = $('button[name=ask]', true);
-  attachHandlersTest(askForSession, '/UI/sessions-history.html');
+  attachHandlersTest(askForSession, '/sessions-history.html');
 };
 /**
  * @description app main entry point
