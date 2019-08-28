@@ -16,7 +16,6 @@ servers:
   - url: 'https://localhost/api/v1'
 security:
   - BearerAuth: []
-  
 paths:
   /auth/signup:
     post:
