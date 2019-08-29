@@ -11,7 +11,7 @@
     "build_ui": "babel UI --out-dir dist/UI --ignore node_modules --ignore test",
     "build_server": "babel server --out-dir dist/server --ignore node_modules --ignore test",
     "clean": "rm -rf dist && mkdir dist",
-    "start": "node dist/index.js",
+    "start": "node dist/server/index.js",
     "lint": "./node_modules/.bin/eslint ./server/*.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
