@@ -6,7 +6,11 @@
   "scripts": {
     "serve": "nodemon dist/index.js",
     "test": "nyc --reporter=text --reporter=html mocha --recursive --require @babel/polyfill --require @babel/register",
-    "build": "babel ./ --out-dir dist --ignore node_modules --ignore test",
+    "build":"npm run clean && npm run build_server && npm run build_ui",
+    "build_test": "babel test --out-dir dist/UI --ignore node_modules --ignore test",
+    "build_ui": "babel UI --out-dir dist/UI --ignore node_modules --ignore test",
+    "build_server": "babel server --out-dir dist/server --ignore node_modules --ignore test",
+    "clean": "rm -rf dist && mkdir dist",
     "start": "node dist/index.js",
     "lint": "./node_modules/.bin/eslint ./server/*.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
