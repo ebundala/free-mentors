@@ -38,13 +38,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
         '400':
           description: Invalid input data
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiError'
       security: []
   /auth/signin:
     post:
@@ -66,13 +66,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
         '400':
           description: failed to login
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiError'
       security: []
   '/user/{userId}':
     summary: users operations
@@ -95,7 +95,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
+        '400':
+          description: toggle user roles between mentor and mentee
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'        
   /mentors:
     summary: get all mentors
     description: 'get all mentors '
@@ -108,7 +114,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
+        '404':
+          description: failed fetching all users who are mentors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'        
   '/mentors/{mentorId} ':
     summary: mentor details
     description: get specific mentor details
@@ -128,13 +140,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
         '404':
           description: mentor doesnt exist
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiError'
   
   /sessions:
     summary: sessions for user
@@ -150,13 +162,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
         '404':
           description: no users sessions request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiError'
     post:
       tags:
         - Create session requests
@@ -171,13 +183,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiSuccess'
         '404':
           description: failed create sessions request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ApiError'
   '/sessions/{sessionId}/accept':
     summary: accept a sessions request
     description: accepts a users sessions request
@@ -197,13 +209,13 @@ paths:
         content:
          application/json:
           schema:
-           $ref: '#/components/schemas/Response'
+           $ref: '#/components/schemas/ApiSuccess'
       '400':
         description: failed accepting request
         content:
          application/json:
           schema:
-           $ref: '#/components/schemas/Response'
+           $ref: '#/components/schemas/ApiError'
   '/sessions/{sessionId}/reject':
     summary: reject a sessions request
     description: reject a users sessions request
@@ -223,13 +235,13 @@ paths:
         content:
          application/json:
           schema:
-           $ref: '#/components/schemas/Response'
+           $ref: '#/components/schemas/ApiSuccess'
       '400':
         description: failed reject request
         content:
          application/json:
           schema:
-           $ref: '#/components/schemas/Response' 
+           $ref: '#/components/schemas/ApiError' 
   '/sessions/{sessionId}/complete':
     summary: complete a sessions request
     description: complete a users sessions request
@@ -249,13 +261,13 @@ paths:
         content:
          application/json:
           schema:
-           $ref: '#/components/schemas/Response'
+           $ref: '#/components/schemas/ApiSuccess'
       '400':
         description: failed reject request
         content:
          application/json:
           schema:
-           $ref: '#/components/schemas/Response' 
+           $ref: '#/components/schemas/ApiError' 
   '/sessions/{sessionId}/review':
     summary: review a mentor after sessions
     description: review a mentor after a session request
@@ -280,13 +292,13 @@ paths:
           content:
            application/json:
             schema:
-             $ref: '#/components/schemas/Response'
+             $ref: '#/components/schemas/ApiSuccess'
       '400':
           description: failed review a mentor
           content:
            application/json:
             schema:
-             $ref: '#/components/schemas/Response' 
+             $ref: '#/components/schemas/ApiError' 
     delete:
      tags:
       - Delete a review
@@ -296,13 +308,13 @@ paths:
           content:
            application/json:
             schema:
-             $ref: '#/components/schemas/Response'
+             $ref: '#/components/schemas/ApiSuccess'
       '400':
           description: failed to delete a review
           content:
            application/json:
             schema:
-             $ref: '#/components/schemas/Response' 
+             $ref: '#/components/schemas/ApiError' 
         
         
 components:
@@ -326,6 +338,12 @@ components:
         bio:
           type: string
         occupation:
+          type: string
+        expertise:
+          type: string
+        gender:
+          type: string  
+        dob:
           type: string
         avator:
           type: string
@@ -399,7 +417,7 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Data'
-    Response:
+    ApiSuccess:
       type: object
       required:
             - status
@@ -413,11 +431,24 @@ components:
         message:
           type: string
         data:
+          type: object
           default:
             - $ref: '#/components/schemas/Data'
           anyOf:
             - $ref: '#/components/schemas/Data'
             - $ref: '#/components/schemas/List'
+    ApiError:
+      type: object
+      required:
+            - status
+            - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          default: 200
+        error:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

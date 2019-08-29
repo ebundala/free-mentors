@@ -18,9 +18,9 @@ export const signup = (req, res) => {
     && occupation
     && expertise
     && isEmail(email)
-    && dob
-    && gender
-    && isLength(password, 6, 20)
+  // && dob
+  // && gender
+    && isLength(password, 1, 20)
   ) {
     const userModel = new User();
     const user = userModel.signUp({

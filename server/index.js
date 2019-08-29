@@ -19,7 +19,6 @@ app.use(apiDoc);
 app.use(routes);
 app.get('/', (req, res) => res.send('your here'));
 app.all('*', (req, res) => {
-  res.status = 404;
   res.status(404).json(new ApiError(404, 'Not found'));
 });
 
