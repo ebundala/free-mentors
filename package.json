@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon dist/index.js",
-    "test": "mocha --require @babel/polyfill --require @babel/register",
-    "build": "babel server --out-dir dist",
+    "test": "nyc --reporter=text --reporter=html mocha --recursive --require @babel/polyfill --require @babel/register",
+    "build": "babel ./ --out-dir dist --ignore node_modules --ignore test",
     "start": "node dist/index.js",
-    "lint": "./node_modules/.bin/eslint *.js"
+    "lint": "./node_modules/.bin/eslint ./server/*.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -36,16 +37,19 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.6",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
     "faker": "^4.1.0",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.1",
-    "puppeteer": "^1.19.0"
+    "nyc": "^14.1.1",
+    "puppeteer": "^1.19.0",
+    "chai-http": "^4.3.0"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.19.0",    
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
