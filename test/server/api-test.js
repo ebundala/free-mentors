@@ -15,18 +15,22 @@ chai.use(chaiHttp);
 // const baseUrl = `http://localhost:${PORT}`;
 const requester = chai.request(server).keepOpen();
 const { expect } = chai;
+
 describe('Api endpoints tests', () => {
   let user;
   let userId;
   before(async () => {
     user = {
-      firstName: faker.name.firstName,
-      lastName: faker.name.lastName,
-      email: faker.internet.email,
-      password: faker.name.password,
-      bio: faker.name.jobDescriptor,
-      occupation: faker.name.jobTitle,
-      expertise: faker.name.jobType,
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      password: faker.random.words(2),
+      bio: faker.lorem.sentences(3),
+      address: faker.address.streetAddress(true),
+      occupation: faker.name.jobTitle(),
+      expertise: faker.name.jobType(),
+      dob: faker.date.past(18),
+      gender: faker.name.title(),
     };
   });
   after(async () => {
@@ -44,52 +48,56 @@ describe('Api endpoints tests', () => {
   describe('user sign up', () => {
     let response;
     before(async () => {
-      /* response = await requester.post('api/v1/auth/signup')
-        .send(user); */
+      response = await requester.post('/api/v1/auth/signup')
+        .send(user);
     });
 
     // response
-    it('has valid status code', () => {
-      // expect(response.statusCode).to.be(201);
+    it('has valid status code 201', () => {
+      expect(response.statusCode).equal(201);
     });
-    it('has a success messages ', () => {
-      /* const { status, message } = response.body;
-      expect(status).to.be(2001);
-      expect(message).to.equal('User created successfully'); */
-    });
-    it('has auth a valid token ', () => {
-      /* const { data } = response.body;
-      const { token } = data;
-      expect(token).to.be.string(); */
+    it('has a valid data ', () => {
+      const { status, message, data } = response.body;
+      expect(status).is.eq(201);
+      expect(message).is.eq('User created successfully');
+      expect(data.id).greaterThan(0);
+      expect(data.role).is.eql('mentee');
+      expect(data.role).is.eql('mentee');
+      expect(data.email).is.eql(user.email);
+      expect(data.bio).is.eql(user.bio);
+      expect(data.occupation).is.eql(user.occupation);
+      expect(data.expertise).is.eql(user.expertise);
+      expect(data).to.have.property('dob');
+      expect(data).to.have.property('createdOn');
     });
   });
 
   describe('user sign in', () => {
-    let credentials;
+    /* let credentials;
     let response;
     before(async () => {
-      /* credentials = {
+      credentials = {
         email: user.email,
         password: user.password,
       };
-      response = await requester.post('api/v1/auth/signin').send(credentials); */
-    });
+      response = await requester.post('api/v1/auth/signin').send(credentials);
+    }); */
 
     // response
-    it('has valid status code', () => {
-      // expect(response.statusCode).to.be(200);
-    });
+    it('has valid status code 200');
 
-    it('has a success messages ', () => {
-      /* const { status, message } = response.body;
+    it('has a success messages ');
+    /* , () => {
+      const { status, message } = response.body;
       expect(status).to.be(200);
-      expect(message).to.be('User is successfully logged in'); */
-    });
-    it('has a valid token ', () => {
-      /* const { data } = response.body;
+      expect(message).to.be('User is successfully logged in');
+    } */
+    /* , () => {
+      const { data } = response.body;
       const { token } = data;
-      expect(token).to.be.string(); */
-    });
+      expect(token).to.be.string();
+    } */
+    it('has a valid token ');
   });
 
 
@@ -99,12 +107,8 @@ describe('Api endpoints tests', () => {
     /*  response = await requester.patch(`api/v1/auth/user/${userId}`)
         .set('Authorization', `bearer ${adminToken}`).send(); */
     });
-    it('has a valid token', () => {
-      // expect().to.be.string(adminToken);
-    });
-    it('has status code 200', () => {
-      // const response
-    });
+    it('has a valid token');
+    it('has status code 200');
     it('it has a success message ');
   });
 
@@ -118,9 +122,7 @@ describe('Api endpoints tests', () => {
     describe('get all mentors response ', () => {
       it('has status code 200');
       it('it has a list of mentors');
-      it('each mentor has valid details', () => {
-
-      });
+      it('each mentor has valid details');
     });
   });
 
@@ -133,9 +135,7 @@ describe('Api endpoints tests', () => {
     });
     describe('get specific mentor response ', () => {
       it('has status code 200');
-      it('has required field ', () => {
-
-      });
+      it('has required field ');
     });
   });
 

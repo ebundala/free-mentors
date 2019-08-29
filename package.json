@@ -4,16 +4,19 @@
   "description": "Free   Mentors   is   a   social   initiative   where   accomplished   professionals   become   role   models   to  ",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon dist/server/index.js",
+    "watch": "npm run clean_debug && npm run build_debug",
+    "serve": "nodemon .debug/server/index.js",
     "test": "nyc --reporter=text --reporter=html mocha --recursive --require @babel/polyfill --require @babel/register",
-    "build":"npm run clean && npm run build_server && npm run build_ui",
-    "build_test": "babel test --out-dir dist/UI --ignore node_modules --ignore test",
-    "build_ui": "babel UI --out-dir dist/UI --ignore node_modules --ignore test",
-    "build_server": "babel server --out-dir dist/server --ignore node_modules --ignore test",
+    "build": "npm run clean && npm run build_server && npm run build_ui && npm run build_test",
     "clean": "rm -rf dist && mkdir dist",
     "start": "node dist/server/index.js",
     "lint": "./node_modules/.bin/eslint ./server/*.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "build_test": "babel test --out-dir dist/UI --ignore node_modules --ignore test",
+    "build_ui": "babel UI --out-dir dist/UI --ignore node_modules --ignore test",
+    "build_server": "babel server --out-dir dist/server --ignore node_modules --ignore test",
+    "clean_debug": "rm -rf .debug && mkdir .debug",
+    "build_debug": "babel ./ --out-dir .debug --ignore node_modules --source-maps --watch"
   },
   "repository": {
     "type": "git",
@@ -53,12 +56,13 @@
     "chai-http": "^4.3.0"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",    
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "swagger-ui-express": "^4.0.7",
+    "validator": "^11.1.0",
     "yamljs": "^0.3.0"
   }
 }
