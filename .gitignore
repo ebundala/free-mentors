@@ -62,5 +62,4 @@ typings/
 .vscode/
 dist
 .cov
-.coverall.yaml
 procfile
