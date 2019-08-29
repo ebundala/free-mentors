@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
 
-const envs = dotenv.config();
+const envs = { ...dotenv.config(), ...process.env };
 
 export default envs;
