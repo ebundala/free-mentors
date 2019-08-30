@@ -74,6 +74,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiError'
       security: []
+  /me:
+    summary: current users information
+    description: get a token amd return users info
+    get:
+     tags:
+      - User information
+     responses:
+      '200':
+        description: success
+        content:
+         application/json:
+          schema:
+            $ref: '#/components/schemas/ApiSuccess'
+      '401':
+        description: failed
+        content:
+         application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+          
   '/user/{userId}':
     summary: users operations
     description: users management endpoint

@@ -59,14 +59,11 @@ export const signin = (req, res) => {
 };
 
 export const me = (req, res) => {
-  try {
-    const { user } = req;
-    if (user) {
-      res.status(200).json(new ApiSuccess(user, 200));
-    } else {
-      throw user;
-    }
-  } catch (e) {
+  const { user } = req;
+  debug(user);
+  if (user) {
+    res.status(200).json(new ApiSuccess(user, 200));
+  } else {
     res.status(401).json(new ApiError(401, 'Unauthorized'));
   }
 };

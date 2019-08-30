@@ -86,7 +86,6 @@ describe('Api endpoints tests', () => {
       expect(message).is.eq('User is successfully logged in');
       expect(data.id).greaterThan(0);
       expect(data.role).is.eql('mentee');
-      expect(data.role).is.eql('mentee');
       expect(data.email).is.eql(user.email);
       expect(data.bio).is.eql(user.bio);
       expect(data.occupation).is.eql(user.occupation);
@@ -96,8 +95,24 @@ describe('Api endpoints tests', () => {
       const { token } = data;
       expect(isJWT(token)).to.eql(true);
     });
-  });
 
+    it('is a valid user', async () => {
+      const { token } = response.body.data;
+      const userInfo = await requester.get('/api/v1/me')
+        .set({ Authorization: `Bearer ${token}` });
+      const { status, message, data } = userInfo.body;
+      expect(status).to.eq(200);
+      expect(data.id).greaterThan(0);
+      expect(data.role).is.eql('mentee');
+      expect(data.email).is.eql(user.email);
+      expect(data.bio).is.eql(user.bio);
+      expect(data.occupation).is.eql(user.occupation);
+      expect(data.expertise).is.eql(user.expertise);
+      expect(data).to.have.property('dob');
+      expect(data).to.have.property('createdOn');
+      expect(isJWT(token)).to.eql(true);
+    });
+  });
 
   describe('change user to mentor', () => {
     let response;
