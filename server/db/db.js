@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import fake from 'faker';
 
 const storage = {
