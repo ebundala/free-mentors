@@ -26,7 +26,7 @@ const defaultAdmin = {
 const defaultMentee = {
   firstName: fake.name.firstName,
   lastName: fake.name.lastName(),
-  email: 'user@freementors.com',
+  email: 'mentee@freementors.com',
   password: 'mentee12345',
   dob: fake.date.past(18),
   address: fake.address.streetAddress(true),
@@ -52,14 +52,15 @@ const defaultMentor = {
 
 export default class Db {
   constructor() {
+    this.txCount = 0;
     if (!this.userExist('admin@freementors.com')) {
-      this.insert(defaultAdmin);
+      this.insert(defaultAdmin, Db.USERS);
     }
     if (!this.userExist('mentor@freementors.com')) {
-      this.insert(defaultMentor);
+      this.insert(defaultMentor, Db.USERS);
     }
     if (!this.userExist('mentee@freementors.com')) {
-      this.insert(defaultMentee);
+      this.insert(defaultMentee, Db.USERS);
     }
   }
 
@@ -78,8 +79,9 @@ export default class Db {
   }
 
   insert(val, collection = Db.USERS, key = 'id') {
+    this.txCount = this.txCount + 1;
     if (collection && val) {
-      const id = this.timestamp();
+      const id = this.timestamp() + (this.txCount * 5000);
       const date = new Date();
 
       const createdOn = date.toUTCString();
