@@ -6,7 +6,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { debug, table } from 'console';
 import faker from 'faker';
-import request from 'request';
+import { isJWT } from 'validator';
 import server from '../../server';
 // eslint-disable-next-line import/named
 import { PORT, adminToken } from '../../server/confing/config';
@@ -60,8 +60,31 @@ describe('Api endpoints tests', () => {
       const { status, message, data } = response.body;
       expect(status).is.eq(201);
       expect(message).is.eq('User created successfully');
+      const { token } = data;
+      expect(isJWT(token)).to.eql(true);
+    });
+  });
+
+  describe('user sign in', () => {
+    let credentials;
+    let response;
+    before(async () => {
+      credentials = {
+        email: user.email,
+        password: user.password,
+      };
+      response = await requester.post('/api/v1/auth/signin').send(credentials);
+    });
+
+    // response
+    it('has valid status code', () => {
+      expect(response.statusCode).to.eq(200);
+    });
+    it('has valid data', () => {
+      const { status, message, data } = response.body;
+      expect(status).to.eq(200);
+      expect(message).is.eq('User is successfully logged in');
       expect(data.id).greaterThan(0);
-      expect(data.role).is.eql('mentee');
       expect(data.role).is.eql('mentee');
       expect(data.email).is.eql(user.email);
       expect(data.bio).is.eql(user.bio);
@@ -69,37 +92,27 @@ describe('Api endpoints tests', () => {
       expect(data.expertise).is.eql(user.expertise);
       expect(data).to.have.property('dob');
       expect(data).to.have.property('createdOn');
+      const { token } = data;
+      expect(isJWT(token)).to.eql(true);
+    });
+
+    it('is a valid user', async () => {
+      const { token } = response.body.data;
+      const userInfo = await requester.get('/api/v1/me')
+        .set({ Authorization: `Bearer ${token}` });
+      const { status, message, data } = userInfo.body;
+      expect(status).to.eq(200);
+      expect(data.id).greaterThan(0);
+      expect(data.role).is.eql('mentee');
+      expect(data.email).is.eql(user.email);
+      expect(data.bio).is.eql(user.bio);
+      expect(data.occupation).is.eql(user.occupation);
+      expect(data.expertise).is.eql(user.expertise);
+      expect(data).to.have.property('dob');
+      expect(data).to.have.property('createdOn');
+      expect(isJWT(token)).to.eql(true);
     });
   });
-
-  describe('user sign in', () => {
-    /* let credentials;
-    let response;
-    before(async () => {
-      credentials = {
-        email: user.email,
-        password: user.password,
-      };
-      response = await requester.post('api/v1/auth/signin').send(credentials);
-    }); */
-
-    // response
-    it('has valid status code 200');
-
-    it('has a success messages ');
-    /* , () => {
-      const { status, message } = response.body;
-      expect(status).to.be(200);
-      expect(message).to.be('User is successfully logged in');
-    } */
-    /* , () => {
-      const { data } = response.body;
-      const { token } = data;
-      expect(token).to.be.string();
-    } */
-    it('has a valid token ');
-  });
-
 
   describe('change user to mentor', () => {
     let response;

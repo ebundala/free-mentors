@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable class-methods-use-this */
 import fake from 'faker';
 
 const storage = {
@@ -52,39 +52,34 @@ const defaultMentor = {
 
 export default class Db {
   constructor() {
-    this.USERS = 'users';
-    this.SESSIONS = 'sessions';
-    this.REVIEWS = 'reviews';
-    this.USERS_INDEX = 'usersIndex';
-
-    if (!Db.userExist('admin@freementors.com')) {
-      this.insert(this.USERS, defaultAdmin);
+    if (!this.userExist('admin@freementors.com')) {
+      this.insert(defaultAdmin);
     }
-    if (!Db.userExist('mentor@freementors.com')) {
-      this.insert(this.USERS, defaultMentor);
+    if (!this.userExist('mentor@freementors.com')) {
+      this.insert(defaultMentor);
     }
-    if (!Db.userExist('mentee@freementors.com')) {
-      this.insert(this.USERS, defaultMentee);
+    if (!this.userExist('mentee@freementors.com')) {
+      this.insert(defaultMentee);
     }
   }
 
-  static getStorage() {
+  getStorage() {
     return storage;
   }
 
-  static timestamp() {
+  timestamp() {
     const date = new Date();
     return Math.ceil(date.getTime());
   }
 
-  static userExist(email) {
-    const user = Db.getByIndex(this.USERS, this.USERS_INDEX, email);
+  userExist(email) {
+    const user = this.getByIndex(email);
     return !!user;
   }
 
-  insert(collection, val, key = 'id') {
+  insert(val, collection = Db.USERS, key = 'id') {
     if (collection && val) {
-      const id = Db.timestamp();
+      const id = this.timestamp();
       const date = new Date();
 
       const createdOn = date.toUTCString();
@@ -93,7 +88,7 @@ export default class Db {
       value[key] = id;
 
       // create user indexes
-      if (collection === this.USERS) {
+      if (collection === Db.USERS) {
         storage.usersIndex[`${val.email}`] = id;
       }
 
@@ -103,7 +98,7 @@ export default class Db {
     return -1;
   }
 
-  static remove(collection, id) {
+  remove(id, collection = Db.USERS) {
     if (collection && id) {
       delete storage[`${collection}`][`${id}`];
       return id;
@@ -111,7 +106,7 @@ export default class Db {
     return -1;
   }
 
-  static update(collection, val, key = 'id') {
+  update(val, key = 'id', collection = Db.USERS) {
     if (collection && val) {
       if (storage[`${collection}`][`${val[`${key}`]}`]) {
         storage[`${collection}`][`${val[`${key}`]}`] = val;
@@ -121,14 +116,14 @@ export default class Db {
     return null;
   }
 
-  static fetch(collection, id) {
+  fetch(id, collection = Db.USERS) {
     if (collection && id) {
       return storage[`${collection}`][`${id}`];
     }
     return null;
   }
 
-  static getAllByFieldValue(col, field, value, f2 = null, v2 = null, f3 = null, v3 = null) {
+  getAllByFieldValue(field, value, col = Db.USERS, f2 = null, v2 = null, f3 = null, v3 = null) {
     const vals = storage[`${col}`];
     if (vals) {
       return Object.values(vals).filter((item) => {
@@ -146,13 +141,18 @@ export default class Db {
     return null;
   }
 
-  static all(collection) {
+  all(collection = Db.USERS) {
     const values = storage[`${collection}`];
     return Object.values(values);
   }
 
-  static getByIndex(collection, indexName, value) {
-    const id = Db.fetch(indexName, value);
-    return Db.fetch(collection, id);
+  getByIndex(value, collection = Db.USERS, indexName = Db.USERS_INDEX) {
+    const id = this.fetch(value, indexName);
+    return this.fetch(id, collection);
   }
 }
+
+Db.USERS = 'users';
+Db.SESSIONS = 'sessions';
+Db.REVIEWS = 'reviews';
+Db.USERS_INDEX = 'usersIndex';
