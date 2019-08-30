@@ -1,45 +1,41 @@
+/* eslint-disable class-methods-use-this */
 // import { Hash } from 'crypto';
+import { debug } from 'console';
 import jwt from 'jsonwebtoken';
 import DB from '../db/db';
 // eslint-disable-next-line import/named
-import { JWT_SECRET } from '../confing/config';
-// eslint-disable-next-line no-unused-vars
-export default class User extends DB {
-  // constructor() {
-  //  super();
-  /* {
-    firstName, lastName, password, email, address, occupation, expertise, dob, bio, avator, role,
-  } */
-  /* this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.password = password;
-    this.dob = dob;
-    this.address = address;
-    this.bio = bio;
-    this.occupation = occupation;
-    this.expertise = expertise;
-    this.avator = avator;
-    this.role = role; */
-  // }
+import config from '../confing/config';
 
+export default class User extends DB {
   signUp(user) {
-    if (user.email && !DB.userExist(user.email)) {
+    if (user.email && !this.userExist(user.email)) {
       const role = 'mentee';
-      const id = this.insert(this.USERS, { ...user, role });
-      if (id > 0) { return DB.fetch(this.USERS, id); }
+      const id = this.insert({ ...user, role }, DB.USERS);
+      if (id > 0) {
+        const result = this.fetch(id, DB.USERS);
+        // debug('TOKEN IS ', config.JWT_SECRET);
+        const token = this.createToken(user);
+        return { ...result, token };
+      }
     }
     return null;
   }
 
-  static signIn(credentials) {
-    if (DB.userExist(credentials.email)) {
-      const user = DB.getByIndex(credentials.email);
-      if (user.password === credentials.password) {
-        const token = jwt.sign(user, JWT_SECRET);
-        return { ...user, token, password: null };
+  signIn({ email, password }) {
+    if (this.userExist(email)) {
+      const user = this.getByIndex(email, DB.USERS, DB.USERS_INDEX);
+      debug('user is with', user, email);
+      if (user.password === password) {
+        const token = this.createToken(user);
+        const data = { ...user, token };
+        delete data.password;
+        return data;
       }
     }
-    return null;
+    return {};
+  }
+
+  createToken(user) {
+    return jwt.sign(user, config.JWT_SECRET);
   }
 }
